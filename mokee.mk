@@ -16,17 +16,17 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit from oneplus3 device
-$(call inherit-product, device/oneplus/oneplus3/device.mk)
+# Inherit from cheeseburger device
+$(call inherit-product, device/oneplus/cheeseburger/device.mk)
 
 # Inherit some common MK stuff.
 $(call inherit-product, vendor/mk/config/common_full_phone.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.mk.maintainer=dianlujitao
+    ro.mk.maintainer=updateing
 
-PRODUCT_NAME := mk_oneplus3
-PRODUCT_DEVICE := oneplus3
+PRODUCT_NAME := mk_cheeseburger
+PRODUCT_DEVICE := cheeseburger
 PRODUCT_MANUFACTURER := OnePlus
 PRODUCT_BRAND := OnePlus
 
