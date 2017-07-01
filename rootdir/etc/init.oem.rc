@@ -1,0 +1,187 @@
+﻿on post-fs-data
+    #NFC, ruanbanmao add for 15801 nfc. 2015/10/19
+    mkdir /data/nfc
+    mkdir /data/oemnvitems  0771 radio radio
+    mkdir /data/fpc 0770 system system
+    mkdir /data/coredump  0777 system system
+    mkdir /data/theme 0775 system system
+    mkdir /data/mdm 0775 system system
+    mkdir /data/theme_storage 0775 system system
+
+#changhua add for fingerint
+on boot
+    chmod 0664 /sys/devices/soc/soc:fpc_fpc1020/irq
+    chown system system /sys/devices/soc/soc:fpc_fpc1020/irq
+    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/report_home
+    chown system system /sys/devices/soc/soc:fpc_fpc1020/report_home
+    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/update_info
+    chown system system /sys/devices/soc/soc:fpc_fpc1020/update_info
+    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/screen_state
+    chown system system /sys/devices/soc/soc:fpc_fpc1020/screen_state
+    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/sensor_version
+    chown system system /sys/devices/soc/soc:fpc_fpc1020/sensor_version
+    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/hw_reset
+    chown system system /sys/devices/soc/soc:fpc_fpc1020/hw_reset
+
+    chmod 0666 /dev/qseecom
+    #NFC, ruanbanmao add for 15801 nfc. 2015/10/19
+    setprop ro.nfc.port "I2C"
+    chmod 0666 /dev/pn544
+    chown nfc nfc /dev/pn544
+    chmod 0666 /dev/p61
+    chown spi spi /dev/p61
+    chmod 0666 /dev/dash/
+    restorecon  /dev/dash
+
+    chown system system /sys/class/leds/red/pause_lo
+    chown system system /sys/class/leds/blue/pause_lo
+    chown system system /sys/class/leds/green/pause_lo
+
+    chown system system /sys/class/leds/red/pause_hi
+    chown system system /sys/class/leds/blue/pause_hi
+    chown system system /sys/class/leds/green/pause_hi
+
+    chown system system /sys/class/leds/red/blink
+    chown system system /sys/class/leds/blue/blink
+    chown system system /sys/class/leds/green/blink
+
+    setprop persist.camera.mobicat 2
+    setprop persist.camera.stats.debugexif 3080192
+
+    chown system system /sys/class/leds/red/blink
+    chown system system /sys/class/leds/blue/blink
+    chown system system /sys/class/leds/green/blink
+    chown system system /sys/class/leds/red/ramp_step_ms
+    chown system system /sys/class/leds/blue/ramp_step_ms
+    chown system system /sys/class/leds/green/ramp_step_ms
+    chown system system /sys/class/leds/red/duty_pcts
+    chown system system /sys/class/leds/blue/duty_pcts
+    chown system system /sys/class/leds/green/duty_pcts
+    chmod 660 /sys/class/leds/red/ramp_step_ms
+    chmod 660 /sys/class/leds/green/ramp_step_ms
+    chmod 660 /sys/class/leds/blue/ramp_step_ms
+    chmod 660 /sys/class/leds/red/duty_pcts
+    chmod 660 /sys/class/leds/green/duty_pcts
+    chmod 660 /sys/class/leds/blue/duty_pcts
+
+# Setup coredump mechanism
+    chmod 0755 /system/bin/coredump.sh
+    write /proc/sys/kernel/core_pattern |/system/bin/coredump.sh\ %p\ %u\ %t
+
+    write /sys/bus/i2c/devices/5-0020/tp_fw_update 0
+
+    chown system system /system/bin/wifi_ftm
+    chmod 0777  /system/bin/wifi_ftm
+    chown system system /system/bin/wifi_single
+    chmod 0777  /system/bin/wifi_single
+    chown system system /system/bin/iwpriv
+    chmod 0777  /system/bin/iwpriv
+    chown system system /system/bin/iwlist
+    chmod 0777  /system/bin/iwlist
+    chown system system /system/xbin/tcpdump
+    chmod 0777  /system/xbin/tcpdump
+
+on property:sys.usb.ffs.ready=1 && property:oem.sys.usb.config=adb && property:sys.usb.configfs=1
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adb"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    write /config/usb_gadget/g1/idVendor 0x2A70
+    write /config/usb_gadget/g1/idProduct 0x4ee7
+    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f1
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${oem.sys.usb.config}
+
+service qseeproxysd /system/vendor/bin/qseeproxysampledaemon
+    class core
+    user system
+    group nfc
+
+on init
+    mount tmpfs none /sys/fs/cgroup mode=0750,uid=0,gid=1000
+    mkdir /sys/fs/cgroup/freezer 0750 root system
+    mount cgroup none /sys/fs/cgroup/freezer  freezer
+    chmod 777 /sys/fs/cgroup/freezer
+
+    restorecon /sys/class/leds/keyboard-backlight/brightness
+    restorecon /sys/class/leds/button-backlight/brightness
+    restorecon /sys/class/leds/red/brightness
+    restorecon /sys/class/leds/green/brightness
+    restorecon /sys/class/leds/blue/brightness
+    restorecon /sys/class/leds/red/blink
+    restorecon /sys/class/leds/green/blink
+    restorecon /sys/class/leds/blue/blink
+
+    chown system system /system/xbin/nfc_trasmit_start.sh
+    chmod 0777  /system/xbin/nfc_trasmit_start.sh
+    chown system system /system/xbin/nfc_trasmit_stop.sh
+    chmod 0777  /system/xbin/nfc_trasmit_stop.sh
+    chown system system system/xbin/pnx
+    chmod 0777  system/xbin/pnx
+
+service nfctransmitstart /system/bin/sh /system/xbin/nfc_trasmit_start.sh
+    class late_start
+    user nfc
+    group nfc
+    disabled
+    oneshot
+
+service nfctransmitstop /system/bin/sh /system/xbin/nfc_trasmit_stop.sh
+    class late_start
+    user nfc
+    group nfc
+    disabled
+    oneshot
+
+on property:nfc.transmit.start=1
+    start nfctransmitstart
+
+on property:nfc.transmit.start=0
+    stop nfctransmitstart
+
+on property:nfc.transmit.stop=1
+    start nfctransmitstop
+
+on property:nfc.transmit.stop=0
+    stop nfctransmitstop
+
+service OPNetlinkService /sbin/OPNetlinkService
+    class core
+    oneshot
+    seclabel u:r:OPNetlinkService:s0
+
+on charger
+    start OPNetlinkService
+
+on post-fs
+    chown system system /proc/ship_mode
+    chown system system /dev/param
+    chown system system /dev/block/mmcblk0p21
+    chmod 660 /dev/block/mmcblk0p21
+    chown system system /sys/class/timed_output/vibrator/vmax
+    chown system system /sys/class/timed_output/vibrator/wf_s0
+    chown system system /sys/class/timed_output/vibrator/wf_s1
+    chown system system /sys/class/timed_output/vibrator/wf_s2
+    chown system system /sys/class/timed_output/vibrator/wf_s3
+    chown system system /sys/class/timed_output/vibrator/wf_s4
+    chown system system /sys/class/timed_output/vibrator/wf_s5
+    chown system system /sys/class/timed_output/vibrator/wf_s6
+    chown system system /sys/class/timed_output/vibrator/wf_s7
+    chown system system /sys/class/timed_output/vibrator/wf_update
+    chown system system /sys/class/timed_output/vibrator/wf_rep
+    chown system system /sys/class/timed_output/vibrator/wf_s_rep
+    chown system log /sys/fs/pstore/console-ramoops-0
+    chmod 0440 /sys/fs/pstore/console-ramoops-0
+
+on property:persist.sys.oem.otg_support=true
+    write /sys/class/power_supply/usb/otg_switch 1
+
+on property:persist.sys.oem.otg_support=false
+    write /sys/class/power_supply/usb/otg_switch 0
+
+service ifaadaemon /system/bin/ifaadaemon
+    class late_start
+    user system
+    group system
