@@ -230,7 +230,6 @@ case "$target" in
         case "$soc_hwplatform" in
             *)
                 #modify by Leo Jia 560 to 420
-                setprop ro.sf.lcd_density 420
                 if [ ! -e /dev/kgsl-3d0 ]; then
                     setprop persist.sys.force_sw_gles 1
                     setprop sdm.idle_time 0
