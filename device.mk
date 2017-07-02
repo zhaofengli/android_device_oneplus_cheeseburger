@@ -316,6 +316,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     sensors.msm8998
 
+# Vehicle network (for slim_daemon)
+PRODUCT_PACKAGES += \
+    libvehiclenetwork-native
+
 # Wifi
 PRODUCT_PACKAGES += \
     ipacm \
