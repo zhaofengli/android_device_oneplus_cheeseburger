@@ -153,6 +153,7 @@ vendor/lib64/hw/gatekeeper.msm8998.so
 
 # GPS
 bin/loc_launcher
+bin/lowi-server
 bin/xtwifi-client
 bin/xtwifi-inet-agent
 etc/permissions/com.qti.location.sdk.xml

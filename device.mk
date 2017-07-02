@@ -197,6 +197,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     gps.msm8998 \
     libgps.utils \
+    libloc_core \
     libloc_stub \
     libloc_pla \
     libcurl \
