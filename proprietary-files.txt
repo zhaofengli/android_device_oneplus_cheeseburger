@@ -317,6 +317,14 @@ vendor/lib/libmmcamera_isp_sub_module.so
 lib64/hw/fingerprint.msm8998.so
 lib64/lib_fpc_tac_shared.so
 
+# Internet Packet Accelerator (IPA) firmware
+etc/firmware/ipa_fws.b00
+etc/firmware/ipa_fws.b01
+etc/firmware/ipa_fws.b02
+etc/firmware/ipa_fws.b03
+etc/firmware/ipa_fws.b04
+etc/firmware/ipa_fws.mdt
+
 # NFC firmware
 vendor/firmware/libpn553_fw.so
 
