@@ -18,14 +18,14 @@ QCOM_BOARD_PLATFORMS += msm8996
 QCOM_BOARD_PLATFORMS += msm8952
 QCOM_BOARD_PLATFORMS += msm8937
 QCOM_BOARD_PLATFORMS += titanium
-QCOM_BOARD_PLATFORMS += msmcobalt
+QCOM_BOARD_PLATFORMS += msm8998
 
 QSD8K_BOARD_PLATFORMS := qsd8k
 
 TARGET_USE_VENDOR_CAMERA_EXT := true
 
 #List of targets that use video hw
-MSM_VIDC_TARGET_LIST := msm8974 msm8610 msm8226 apq8084 msm8916 msm8994 msm8909 msm8992 msm8996 msm8952 msm8937 titanium msmcobalt
+MSM_VIDC_TARGET_LIST := msm8974 msm8610 msm8226 apq8084 msm8916 msm8994 msm8909 msm8992 msm8996 msm8952 msm8937 titanium msm8998
 
 #List of targets that use master side content protection
 MASTER_SIDE_CP_TARGET_LIST := msm8996
@@ -149,7 +149,7 @@ BT := javax.btobex
 BT += libattrib_static
 BT += hcidump.sh
 BT += libbt-vendor
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/google/marlin/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/oneplus/cheeseburger/bluetooth
 
 #C2DColorConvert
 C2DCC := libc2dcolorconvert
@@ -836,18 +836,13 @@ PRODUCT_COPY_FILES += \
 #PRODUCT_PACKAGE_OVERLAYS += device/google/marlin/common/product/overlay
 
 # include additional build utilities
--include device/google/marlin/common/utils.mk
+-include device/oneplus/cheeseburger/common/utils.mk
 
 #Enabling Ring Tones
 #include frameworks/base/data/sounds/OriginalAudio.mk
 
 #Enabling video for live effects
 -include frameworks/base/data/videos/VideoPackage1.mk
-
-#TODO: move to device.mk
-# dm-verity definitions
-PRODUCT_SYSTEM_VERITY_PARTITION=/dev/block/platform/soc/624000.ufshc/by-name/system
-$(call inherit-product, build/target/product/verity.mk)
 
 #skip boot jars check
 SKIP_BOOT_JARS_CHECK := true
