@@ -101,6 +101,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
 
+# Oreo demands navigation bar
+PRODUCT_PROPERTY_OVERRIDES += \
+    qemu.hw.mainkeys=0
+
+# sdcardfs needs to be turned off explicitly in Oreo
+# Or massive kernel update needed
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sys.sdcardfs=false
+
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
