@@ -199,6 +199,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fs_config_files
 
+# Gatekeeper
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8998 \
@@ -347,6 +352,10 @@ PRODUCT_PACKAGES += \
 # Vehicle network (for slim_daemon)
 PRODUCT_PACKAGES += \
     libvehiclenetwork-native
+
+# Vendor seccomp policy files for media components:
+PRODUCT_COPY_FILES += \
+    device/oneplus/cheeseburger/seccomp_policy/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
 
 # Wifi
 PRODUCT_PACKAGES += \
