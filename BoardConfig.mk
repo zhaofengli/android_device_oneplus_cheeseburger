@@ -192,6 +192,9 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 # For compiling
 BOARD_VENDOR_QCOM_LOC_PDK_FEATURE_SET:=true
 
+# HAL manifest
+DEVICE_MANIFEST_FILE := device/oneplus/cheeseburger/manifest.xml
+
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
 
