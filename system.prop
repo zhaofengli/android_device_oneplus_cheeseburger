@@ -48,7 +48,7 @@ bt.max.hfpclient.connections=1
 persist.bt.a2dp.aac_disable=true
 persist.bt.a2dp.aptx_disable=false
 persist.bt.a2dp.aptx_hd_disable=false
-persist.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac
+persist.bt.a2dp_offload_cap=sbc-aptx-aptxhd
 qcom.bluetooth.soc=cherokee
 ro.bluetooth.a4wp=false
 ro.bluetooth.emb_wp_mode=false
@@ -103,7 +103,6 @@ media.stagefright.enable-scan=true
 mmp.enable.3g2=true
 media.aac_51_output_enabled=true
 mm.enable.smoothstreaming=true
-mm.enable.qcom_parser=16760831
 persist.mm.enable.prefetch=true
 vidc.enc.dcvs.extra-buff-count=2
 

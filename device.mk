@@ -79,24 +79,28 @@ PRODUCT_SHIPPING_API_LEVEL := 25
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
-# Override heap growth limit due to high display density on device
+# HWUI from Stock
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapgrowthlimit=256m \
-
-# Dalvik
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
-$(call inherit-product, device/oneplus/cheeseburger/common/common64.mk)
-
-# HWUI common settings
-PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hwui.texture_cache_size=96 \
+    ro.hwui.layer_cache_size=64 \
+    ro.hwui.r_buffer_cache_size=12 \
+    ro.hwui.path_cache_size=39 \
     ro.hwui.gradient_cache_size=1 \
-    ro.hwui.drop_shadow_cache_size=6 \
-    ro.hwui.r_buffer_cache_size=8 \
+    ro.hwui.drop_shadow_cache_size=7 \
     ro.hwui.texture_cache_flushrate=0.4 \
-    ro.hwui.text_small_cache_width=1024 \
-    ro.hwui.text_small_cache_height=1024 \
-    ro.hwui.text_large_cache_width=2048 \
-    ro.hwui.text_large_cache_height=1024
+    ro.hwui.text_small_cache_width=2048 \
+    ro.hwui.text_small_cache_height=2048 \
+    ro.hwui.text_large_cache_width=3072 \
+    ro.hwui.text_large_cache_height=2048
+
+# Dalvik from Stock
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapstartsize=16m \
+    dalvik.vm.heapgrowthlimit=256m \
+    dalvik.vm.heapsize=512m \
+    dalvik.vm.heaptargetutilization=0.75 \
+    dalvik.vm.heapminfree=4m \
+    dalvik.vm.heapmaxfree=8m
 
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
@@ -129,14 +133,11 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    $(LOCAL_PATH)/audio/audio_output_policy.conf:system/vendor/etc/audio_output_policy.conf \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     $(LOCAL_PATH)/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
     $(LOCAL_PATH)/audio/listen_platform_info.xml:system/etc/listen_platform_info.xml \
-    $(LOCAL_PATH)/audio/mixer_paths_dtp.xml:system/etc/mixer_paths_dtp.xml \
     $(LOCAL_PATH)/audio/mixer_paths_i2s.xml:system/etc/mixer_paths_i2s.xml \
     $(LOCAL_PATH)/audio/mixer_paths_qvr.xml:system/etc/mixer_paths_qvr.xml \
-    $(LOCAL_PATH)/audio/mixer_paths_skuk.xml:system/etc/mixer_paths_skuk.xml \
     $(LOCAL_PATH)/audio/mixer_paths_tasha.xml:system/etc/mixer_paths_tasha.xml \
     $(LOCAL_PATH)/audio/mixer_paths_tavil.xml:system/etc/mixer_paths_tavil.xml \
     $(LOCAL_PATH)/audio/sound_trigger_mixer_paths_wcd9330.xml:system/etc/sound_trigger_mixer_paths_wcd9330.xml \
@@ -159,6 +160,12 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     Snap
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/camera/camera_config.xml:system/etc/camera/camera_config.xml \
+    $(LOCAL_PATH)/camera/imx350_chromatix.xml:system/etc/camera/imx350_chromatix.xml \
+    $(LOCAL_PATH)/camera/imx371_chromatix.xml:system/etc/camera/imx371_chromatix.xml \
+    $(LOCAL_PATH)/camera/imx398_chromatix.xml:system/etc/camera/imx398_chromatix.xml
 
 # Configpanel
 #PRODUCT_PACKAGES += \
