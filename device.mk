@@ -352,8 +352,7 @@ PRODUCT_PACKAGES += \
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
-    android.hardware.sensors@1.0-service \
-    sensors.msm8998
+    android.hardware.sensors@1.0-service
 
 # Vehicle network (for slim_daemon)
 PRODUCT_PACKAGES += \
