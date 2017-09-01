@@ -62,7 +62,7 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <!-- <hal format="hidl">
+    <hal format="hidl">
         <name>android.hardware.contexthub</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -71,7 +71,7 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl">
+    <!-- <hal format="hidl">
         <name>android.hardware.drm</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -205,10 +205,12 @@
         <interface>
             <name>IRadio</name>
             <instance>slot1</instance>
+            <instance>slot2</instance>
         </interface>
         <interface>
             <name>ISap</name>
             <instance>slot1</instance>
+            <instance>slot2</instance>
         </interface>
     </hal>
     <hal format="hidl">
@@ -218,6 +220,7 @@
         <interface>
             <name>IOemHook</name>
             <instance>slot1</instance>
+            <instance>slot2</instance>
         </interface>
     </hal>
     <!-- <hal format="hidl">
