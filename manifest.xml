@@ -228,7 +228,7 @@
             <name>ISensors</name>
             <instance>default</instance>
         </interface>
-    </hal>
+    </hal> -->
     <hal format="hidl">
         <name>android.hardware.renderscript</name>
         <transport arch="32+64">passthrough</transport>
@@ -237,7 +237,7 @@
             <name>IDevice</name>
             <instance>default</instance>
         </interface>
-    </hal> -->
+    </hal>
     <!-- <hal format="hidl">
         <name>android.hardware.soundtrigger</name>
         <transport>hwbinder</transport>
@@ -264,7 +264,7 @@
             <name>IUsb</name>
             <instance>default</instance>
         </interface>
-    </hal>
+    </hal> -->
     <hal format="hidl">
         <name>android.hardware.vibrator</name>
         <transport>hwbinder</transport>
@@ -274,7 +274,7 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl">
+    <!-- <hal format="hidl">
         <name>android.hardware.vr</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
