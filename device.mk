@@ -153,14 +153,10 @@ PRODUCT_COPY_FILES += \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:/system/etc/r_submix_audio_policy_configuration.xml \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:/system/etc/usb_audio_policy_configuration.xml
 
-# APNs
-PRODUCT_COPY_FILES += \
-    device/oneplus/cheeseburger/apns-full-conf.xml:system/etc/apns-conf.xml
-
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0-impl \
-    android.hardware.bluetooth@1.0-service \
+    android.hardware.bluetooth@1.0-service
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -208,7 +204,7 @@ PRODUCT_PACKAGES += \
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service \
-    fingerprintd \
+    fingerprintd
 #    OneplusPocketMode
 
 # For android_filesystem_config.h
@@ -270,6 +266,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl \
     android.hardware.keymaster@3.0-service
+
+# Launcher (AOSP)
+PRODUCT_PACKAGES += \
+    Launcher3 \
+    WallpaperPicker
 
 # Lights
 PRODUCT_PACKAGES += \
