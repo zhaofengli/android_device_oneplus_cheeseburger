@@ -373,7 +373,8 @@ PRODUCT_PACKAGES += \
     android.hardware.contexthub@1.0-service \
     android.hardware.sensors@1.0-impl \
     android.hardware.sensors@1.0-service \
-    context_hub.default
+    context_hub.default \
+    sensors.cheeseburger
 
 # Vehicle network (for slim_daemon)
 PRODUCT_PACKAGES += \
