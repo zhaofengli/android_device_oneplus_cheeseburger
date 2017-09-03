@@ -164,6 +164,10 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+    camera.msm8998 \
+    libmmcamera_interface \
+    libmmjpeg_interface \
+    libqomx_core \
     Snap
 
 PRODUCT_COPY_FILES += \

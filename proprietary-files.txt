@@ -18,11 +18,7 @@ etc/camera/cp/FusionCalibrationParams.bin
 etc/camera/cp/SystemParamsBokeh.bin
 etc/camera/cp/SystemParamsFusion.bin
 etc/camera/cp/CPCalibrationData.bin
-lib/hw/camera.msm8998.so
-lib/libmmcamera_interface.so
-lib/libmmjpeg_interface.so
 lib/libopposfr.so
-lib/libqomx_core.so
 lib/libVDBlurlessAPI.so
 lib/libVDHDRAPI.so
 vendor/lib/libarcsoft_dualcam_refocus.so
