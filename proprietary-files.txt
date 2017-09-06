@@ -18,6 +18,7 @@ etc/camera/cp/FusionCalibrationParams.bin
 etc/camera/cp/SystemParamsBokeh.bin
 etc/camera/cp/SystemParamsFusion.bin
 etc/camera/cp/CPCalibrationData.bin
+lib/hw/camera.msm8998.so
 lib/libopposfr.so
 lib/libVDBlurlessAPI.so
 lib/libVDHDRAPI.so
