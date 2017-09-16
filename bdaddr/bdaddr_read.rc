@@ -1,0 +1,6 @@
+service bdaddr_read /vendor/bin/bdaddr_read
+    class main
+    user bluetooth
+    group bluetooth
+    oneshot
+
